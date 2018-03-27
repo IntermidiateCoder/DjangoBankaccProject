@@ -1,0 +1,28 @@
+{% extends "base_generic.html" %}
+{% block content %}
+<h1>Manage your balance</h1>
+
+{% if error_message %}
+<h3> {{ error_message }} </h3>
+{% endif %}
+{% if success %}
+<h3>Money added</h3>
+{% endif %}
+<form action="{%url 'polls:tweakbalance' %}" method="post">
+{% csrf_token %}
+    Amount of money: <input type="number" required name="amount" min="1" /> NIS <br/><br />
+    Category: 
+    <select name="category">
+    {% for option in income_types %}
+    	<option id="choice{{forloop.counter}}" value="{{option.text}}">{{ option.text }}</option>
+    {% endfor %}
+	</select>
+    <br /><br />
+
+    <select name="signofmoney">
+    	<option value="income">Income</option>
+    	<option value="outcome">Outcome</option>
+	</select>
+<input type="submit" value="Update Balance" name="addmoney" />
+</form>
+{% endblock %}

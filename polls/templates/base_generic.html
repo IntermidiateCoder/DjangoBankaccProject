@@ -1,0 +1,28 @@
+{% load staticfiles %}
+<!DOCTYPE html lang="en">
+<html>
+	<head>
+		<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+	</head>
+<body>
+	<ul class="sidebar-nav">
+
+
+	   {% if user.is_authenticated %}
+	   	 <li><a href="{% url 'polls:myview' %}">Home</a></li>
+	     <li>User: <strong style="color:#50c878">{{ user.get_username }}</strong></li>
+	     <li><a href="{% url 'polls:income' %}">Manage balance</a></li>
+	     <li><a href="{% url 'polls:history_log' %}">Transactions Log</a></li>
+	     <li><a href="{% url 'polls:logout'%}">Logout</a></li>   
+	   {% else %}
+	     <li><a href="{% url 'polls:login'%}">Login</a></li>   
+	   {% endif %} 
+
+	</ul>
+	<div class="container" style="">
+	{% block content %}
+
+	{% endblock %}
+	</div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+
+body {
+	background-image: url('../imgs/background.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+header > #logo{
+	font-family: sans-serif;
+    min-width: 400px;
+    max-width: 960px;
+    margin: 0 auto;
+    margin-top: 02.851%;
+    margin-left: 10%;
+}
+
+#greet{
+	text-align: center;
+	margin-top: 5%;
+	color: white;
+	text-shadow: 1.2px 0 white;
+}
+
+#greet > h1{
+	font-size: 400%;
+}
+
+#about > h2{
+	text-align: center;
+	margin-top: 8.5%;
+	text-shadow: 1.2px 0 black;
+}
+
+#about > p{
+	min-width: 20%;
+	max-width: 60%;
+	margin-top: 4%;
+	margin-left: 20%;
+}

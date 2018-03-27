@@ -1,0 +1,5 @@
+1. Manage balance:
+	create history log
+2. Design the web
+3. Check for graphing the history in a new page
+4. Savings (?)

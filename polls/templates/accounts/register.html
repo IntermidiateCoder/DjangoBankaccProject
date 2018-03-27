@@ -1,0 +1,11 @@
+<h1>Registeration Page</h1>
+
+<form action="{%url 'polls:register_to_db' %}" method="post">
+{% csrf_token %}
+    Username: <input type="text" name="username" /><br/>
+    Email: <input type="text" name="email" /><br/>
+    Password: <input type="password" name="password" /><br/>
+    First Name: <input type="text" name="first_name" /><br/>
+    Last Name: <input type="text" name="last_name" /><br />
+<input type="submit" value="Submit" />
+</form>

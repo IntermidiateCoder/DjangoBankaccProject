@@ -1,0 +1,11 @@
+<ul class="sidebar-nav">
+
+
+   {% if user.is_authenticated %}
+     <li>User: {{ user.get_username }}</li>
+     <li><a href="{% url 'polls:logout'%}">Logout</a></li>   
+   {% else %}
+     <li><a href="{% url 'polls:login'%}">Login</a></li>   
+   {% endif %} 
+
+</ul>
