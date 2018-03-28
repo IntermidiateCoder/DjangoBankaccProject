@@ -1,6 +1,9 @@
 {% extends "base_generic.html" %}
 {% block content %}
-<p>Logged out!</p>  
+<p>Logged out successfully!</p>  
 
 <a href="{% url 'polls:login'%}">Click here to login again.</a>
+{% endblock %}
+{% block title %}
+<title>Logged out</title>
 {% endblock %}
