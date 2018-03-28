@@ -1,28 +1,59 @@
 {% extends "base_generic.html" %}
+{% load staticfiles %}
 {% block content %}
+<style>
+    body {
+        display: -ms-flexbox;
+        display: -webkit-box;
+        display: flex;
+        -ms-flex-align: center;
+        -ms-flex-pack: center;
+        -webkit-box-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+</style>
 <h1>Manage your balance</h1>
-
 {% if error_message %}
 <h3> {{ error_message }} </h3>
 {% endif %}
 {% if success %}
 <h3>Money added</h3>
 {% endif %}
-<form action="{%url 'polls:tweakbalance' %}" method="post">
+<form class="form-signin" action="{%url 'polls:tweakbalance' %}" method="post">
 {% csrf_token %}
-    Amount of money: <input type="number" required name="amount" min="1" /> NIS <br/><br />
-    Category: 
-    <select name="category">
+	<label for="id_amnt" class="sr-only">Amount</label>
+	<input type="number" name="amount" id="id_amnt" maxlength="254" class="form-control" placeholder="Amount" required autofocus>
+    <select class="form-control custom-select mb-2 mr-sm-2 mb-sm-0" name="category">
     {% for option in income_types %}
     	<option id="choice{{forloop.counter}}" value="{{option.text}}">{{ option.text }}</option>
     {% endfor %}
 	</select>
-    <br /><br />
 
-    <select name="signofmoney">
+    <select class="form-control custom-select mb-2 mr-sm-2 mb-sm-0" name="signofmoney">
     	<option value="income">Income</option>
     	<option value="outcome">Outcome</option>
-	</select>
-<input type="submit" value="Update Balance" name="addmoney" />
+	</select><br /> <br />
+	<button class="btn btn-lg btn-primary btn-block" name="addmoney" value ="Update Balance" type="submit">Update Balance</button>
 </form>
+{% endblock %}
+
+{% block active %}
+<nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'polls:myview' %}">Overview <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="{% url 'polls:income' %}">Manage balance</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'polls:history_log' %}">Transactions Log</a>
+            </li>
+          </ul>
+
+</nav>
 {% endblock %}

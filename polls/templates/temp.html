@@ -1,0 +1,94 @@
+	<!--
+	<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+          	<a href="{% url 'polls:welcome_page' %}"><img class="mb-4" src="{% static 'img/ico.png' %}" alt="" width="72" height="72"></a>
+            <ul class="nav flex-column">
+            	{% if user.is_authenticated %}
+	              <li class="nav-item">
+	                <a class="nav-link" href="{% url 'polls:myview' %}">
+	                  <span data-feather="home"></span>
+	                  Dashboard
+	                </a>
+	              </li>
+	              <li class="nav-item">
+	                <a class="nav-link" href="{% url 'polls:income' %}">
+	                  <span data-feather="file"></span>
+	                  Manage balance
+	                </a>
+	              </li>
+	              <li class="nav-item">
+	                <a class="nav-link" href="{% url 'polls:history_log' %}">
+	                  <span data-feather="shopping-cart"></span>
+	                  Transactions Log
+	                </a>
+	              </li>
+	              <li class="nav-item">
+	                <a class="nav-link" href="{% url 'polls:logout' %}">
+	                  <span data-feather="users"></span>
+	                  Logout
+	                </a>
+	              </li>
+	            {% else %}
+					<li class="nav-item">
+		                <a class="nav-link" href="{% url 'polls:login' %}">
+		                  <span data-feather="bar-chart-2"></span>
+		                  Login
+		                </a>
+	              	</li>
+	            {% endif %}
+            </ul>
+        <ul class="sidebar-nav">
+		   {% if user.is_authenticated %}
+		   	 <li><a href="{% url 'polls:myview' %}">Home</a></li>
+		     <li>User: <strong style="color:#50c878">{{ user.get_username }}</strong></li>
+		     <li><a href="{% url 'polls:income' %}">Manage balance</a></li>
+		     <li><a href="{% url 'polls:history_log' %}">Transactions Log</a></li>
+		     <li><a href="{% url 'polls:logout'%}">Logout</a></li>   
+		   {% else%}
+		     <li><a href="{% url 'polls:login'%}">Login</a></li>
+		   {% endif %} 
+		</ul>-->
+
+<!--
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+              <span>Saved reports</span>
+              <a class="d-flex align-items-center text-muted" href="#">
+                <span data-feather="plus-circle"></span>
+              </a>
+            </h6>
+            <ul class="nav flex-column mb-2">
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="file-text"></span>
+                  Current month
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="file-text"></span>
+                  Last quarter
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="file-text"></span>
+                  Social engagement
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="file-text"></span>
+                  Year-end sale
+                </a>
+              </li>
+            </ul> -->
+          </div>
+    </nav>
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+		
+		<div class="text-center" style="margin-right:130">
+		{% block content %}
+
+		{% endblock %}
+		</div>
+	</main> 

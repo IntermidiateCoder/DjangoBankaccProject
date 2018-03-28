@@ -1,20 +1,105 @@
-{% extends "base_generic.html" %}
-{% block content %}
 
-<h1>Registeration Page</h1>
+{% load staticfiles %}
+<!DOCTYPE html lang="en">
+<html>
+<head>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        display: -ms-flexbox;
+        display: -webkit-box;
+        display: flex;
+        -ms-flex-align: center;
+        -ms-flex-pack: center;
+        -webkit-box-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+        padding-top: 40px;
+        padding-bottom: 40px;
+        background-color: #f5f5f5;
+      }
+
+      .form-signin {
+        width: 100%;
+        max-width: 330px;
+        padding: 15px;
+        margin: 0 auto;
+      }
+      .form-signin .checkbox {
+        font-weight: 400;
+      }
+      .form-signin .form-control {
+        position: relative;
+        box-sizing: border-box;
+        height: auto;
+        padding: 10px;
+        font-size: 16px;
+      }
+      .form-signin .form-control:focus {
+        z-index: 2;
+      }
+      .form-signin input[type="email"] {
+        margin-bottom: -1px;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+      .form-signin input[type="password"] {
+        margin-bottom: 10px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+    </style>
+    <title>Login</title>
+    <link rel="icon" href="{% static 'img/ico.png' %}" />
+  </head>
+<body>
+  <div class="container" style="">
+    <div class="text-center">
+      {% if form.errors %}
+      <p>Your username and password didn't match. Please try again.</p>
+      {% endif %}
+
+      {% if not user.is_authenticated  %}
+      <form class="form-signin" method="post" action="{% url 'polls:register_to_db' %}">
+      {% csrf_token %}
+	      <img class="mb-4" src="{% static 'img/icon.jpg' %}" alt="" width="72" height="72">
+	      <h1 class="h3 mb-3 font-weight-normal">Registeration page</h1>
+
+	        <label for="id_username" class="sr-only">Username</label>
+	        <input type="text" name="username" id="id_username" maxlength="254" class="form-control" placeholder="Username" required autofocus>
+
+	        <label for="id_email" class="sr-only">Email</label>
+	        <input type="email" name="email" id="id_email" class="form-control" placeholder="Email" required>
+
+	        <label for="id_password" class="sr-only">Password</label>
+	        <input type="password" name="password" id="id_password" class="form-control" placeholder="Password" required>
+
+	        <label for="id_fname" class="sr-only">First Name</label>
+	        <input type="text" name="first_name" id="id_fname" class="form-control" placeholder="First Name" required>
+
+	        <label for="id_lname" class="sr-only">Last Name</label>
+	        <input type="text" name="last_name" id="id_lname" class="form-control" placeholder="Last Name" required><br />
 
 
-{% if error_message %}
-<h3> {{ error_message }} </h3>
-{% endif %}
-<form action="{%url 'polls:register_to_db' %}" method="post">
-{% csrf_token %}
-    Username: <input type="text" required name="username" /><br/>
-    Email: <input type="email" required name="email" /><br/>
-    Password: <input type="password" required name="password" /><br/>
-    First Name: <input type="text" required name="first_name" /><br/>
-    Last Name: <input type="text" required name="last_name" /><br />
-<input type="submit" value="Submit" />
-</form>
+	      <div>
+	        <!-- <input type="submit" value="login" /> -->
+	        <button class="btn btn-lg btn-primary btn-block"  value ="Register" type="submit">Register</button>
+	        <input type="hidden" name="next" value="{{ next }}" />
+	      </div>
+      </form>
+      {% endif %}
 
-{% endblock %}
+      <p><a href="{% url 'polls:login' %}">Do you have an account?</a></p>
+      <p class="mt-5 mb-3 text-muted">&copy; 2018 Ofek Hayun's Money Management Website</p>
+    </div>
+  </div>
+</body>
+</html>
+
+

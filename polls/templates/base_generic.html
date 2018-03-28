@@ -3,26 +3,60 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+    	<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    	<meta name="description" content="">
+    	<meta name="author" content="">
+		<link rel="stylesheet" href="{% static 'css/sidemenu.css' %}" />
+
 	</head>
 <body>
-	<ul class="sidebar-nav">
+	<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+      <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">Money Management</a>
 
+	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+        {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'polls:welcome_page' %}">Homepage</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'polls:logout' %}">Logout</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'polls:welcome_page' %}">Homepage</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'polls:login' %}">Login</a>
+          </li>
+          {% endif %}
+        </ul>
 
-	   {% if user.is_authenticated %}
-	   	 <li><a href="{% url 'polls:myview' %}">Home</a></li>
-	     <li>User: <strong style="color:#50c878">{{ user.get_username }}</strong></li>
-	     <li><a href="{% url 'polls:income' %}">Manage balance</a></li>
-	     <li><a href="{% url 'polls:history_log' %}">Transactions Log</a></li>
-	     <li><a href="{% url 'polls:logout'%}">Logout</a></li>   
-	   {% else %}
-	     <li><a href="{% url 'polls:login'%}">Login</a></li>   
-	   {% endif %} 
-
-	</ul>
-	<div class="container" style="">
-	{% block content %}
-
-	{% endblock %}
 	</div>
+    </nav>
+
+    <div class="container-fluid">
+    {% if user.is_authenticated %}
+      <div class="row">
+        {% block active %}
+        
+        {% endblock %}
+     {% endif %}
+	
+
+
+        <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+			{% block content %}
+
+			{% endblock %}
+        </main>
+      </div>
+    </div>
 </body>
 </html>
+
+
