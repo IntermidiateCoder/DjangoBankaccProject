@@ -1,0 +1,16 @@
+{% extends "polls/logs.html" %}
+{% load staticfiles %}
+{% block log %}
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'polls:past_trans' %}">Past Transactions</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'polls:iograph' %}">Income / Outcome Graph</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'polls:balancegraph' %}">Balance Overtime Graph</a>
+            </li>
+          </ul>
+          <h1></h1>
+{% endblock %}

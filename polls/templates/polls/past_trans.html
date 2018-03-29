@@ -1,0 +1,37 @@
+{% extends "polls/logs.html" %}
+{% load staticfiles %}
+{% block log %}
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+              <a class="nav-link active" href="{% url 'polls:past_trans' %}">Past Transactions</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'polls:iograph' %}">Income / Outcome Graph</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'polls:balancegraph' %}">Balance Overtime Graph</a>
+            </li>
+          </ul>
+          <h1></h1>
+<h2>A table of past transactions:</h2>
+<table class="table">
+	<thead>
+	    <tr>
+	        <th>Date</th>
+	        <th>Category</th>
+	        <th>Income / Outcome</th>
+	        <th>Amount</th>
+	    </tr>
+	</thead>
+	<tbody>
+    {% for log in logs %}
+	    <tr> 
+	        <td>{{ log.date }} </td>
+	        <td>{{ log.category }} </td>
+	        <td>{{ log.income_or_outcome }} </td>
+	        <td>{{ log.amount }} NIS</td>
+	    </tr>
+    {% endfor %}
+	</tbody>
+</table>
+{% endblock %}

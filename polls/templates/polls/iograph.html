@@ -1,0 +1,30 @@
+{% extends "polls/logs.html" %}
+{% load staticfiles %}
+{% block log %}
+          <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+              <a class="nav-link " href="{% url 'polls:past_trans' %}">Past Transactions</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="{% url 'polls:iograph' %}">Income / Outcome Graph</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'polls:balancegraph' %}">Balance Overtime Graph</a>
+            </li>
+          </ul>
+          <h1></h1>
+<h2>A graph describing incomes and outcomes:</h2><br />
+<div class="col-md-offset-4 ">
+		<canvas class="chart" id="myChart" ></canvas>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+        <script type="text/javascript" src="{% static 'js/Chart.min.js' %}"></script>
+        <script type="text/javascript">
+            $.get('{% url "polls:trans_chart_json" %}', function(data) {
+                var ctx = $("#myChart").get(0).getContext("2d");
+                new Chart(ctx, {
+                    type: 'line', data: data
+                });
+            });
+        </script>
+</div>
+{% endblock %}
