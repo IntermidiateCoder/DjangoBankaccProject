@@ -61,8 +61,8 @@
 <body>
   <div class="container" style="">
     <div class="text-center">
-      {% if form.errors %}
-      <p>Your username and password didn't match. Please try again.</p>
+      {% if error_message %}
+      <h1>{{ error_message }}</h1>
       {% endif %}
 
       {% if not user.is_authenticated  %}
