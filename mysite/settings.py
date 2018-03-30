@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '@=*(-#k6*6msu$2^l373=_-p3ut^hnw!hfi#v*$goiim(aoy41'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['grobe.pythonanywhere.com', '127.0.0.1']
+ALLOWED_HOSTS = ['gitgrobe.pythonanywhere.com', '127.0.0.1']
 
 
 # Application definition
@@ -120,5 +120,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = '/home/gitgrobe/djangoproject/DjangoBankaccProject/static'
 LOGIN_URL = '/polls/login'
 LOGIN_REDIRECT_URL = '/polls/homepage'
