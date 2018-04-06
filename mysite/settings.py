@@ -118,7 +118,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
-
+SECURE_BROWSER_XSS_FILTER = True
 STATIC_URL = '/static/'
 STATIC_ROOT = '/home/gitgrobe/djangoproject/DjangoBankaccProject/static'
 LOGIN_URL = '/polls/login'
