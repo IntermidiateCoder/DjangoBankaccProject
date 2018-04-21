@@ -1,3 +1,4 @@
 polls/static/* linguist-vendored
 polls/templates/* linguist-vendored
 myenv/* linguist-vendored
+
